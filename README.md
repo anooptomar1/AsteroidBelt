@@ -20,3 +20,7 @@ Cloned project will have the following folder structure:
   - AsteroidBelt_starter   *//completed project with commented out lines to follow the exercise*           
     - AsteroidBelt
     - AsteroidBelt.xcodeproj
+
+
+###Slides
+https://dl.dropboxusercontent.com/u/25115311/asteroidGame.key
