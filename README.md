@@ -23,4 +23,4 @@ Cloned project will have the following folder structure:
 
 
 ###Slides
-https://dl.dropboxusercontent.com/u/25115311/asteroidGame.key
+The slides can be found [here](https://www.dropbox.com/s/gp1o007q11xz5di/asteroidGame.key?dl=0)
