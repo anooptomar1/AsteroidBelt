@@ -15,7 +15,7 @@ class SpawnComponent: GKComponent {
     This subclass of GameplayKit component is responsible for creating a position for node spawn
     */
     
-    private let zPosition: Float = -50 //z coordinate is always far from the viewer
+    fileprivate let zPosition: Float = -50 //z coordinate is always far from the viewer
     var positionVector = SCNVector3Zero
     
     override init() {
@@ -37,6 +37,10 @@ class SpawnComponent: GKComponent {
         
         //vector with random x and y positions
         self.positionVector = SCNVector3(xPosition, yPosition, self.zPosition)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
 }

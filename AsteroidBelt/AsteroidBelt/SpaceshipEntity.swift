@@ -38,9 +38,13 @@ class SpaceshipEntity: GKEntity {
         self.node?.rotation = SCNVector4(x: 0, y: 1, z: 0, w: Float(M_PI))
         
         //setup physics body
-        self.node?.physicsBody = SCNPhysicsBody.kinematicBody()
-        self.node?.physicsBody?.categoryBitMask = CollisionCategory.Ship.rawValue
-        self.node?.physicsBody?.contactTestBitMask = CollisionCategory.Asteroid.rawValue
+        self.node?.physicsBody = SCNPhysicsBody.kinematic()
+        self.node?.physicsBody?.categoryBitMask = CollisionCategory.ship.rawValue
+        self.node?.physicsBody?.contactTestBitMask = CollisionCategory.asteroid.rawValue
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }

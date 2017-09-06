@@ -43,6 +43,10 @@ class SpaceshipEntity: GKEntity {
 //        self.node?.physicsBody?.contactTestBitMask = CollisionCategory.Asteroid.rawValue
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
 }
 
 

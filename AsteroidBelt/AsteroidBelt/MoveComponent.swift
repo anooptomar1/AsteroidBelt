@@ -23,6 +23,10 @@ class MoveComponent: GKComponent {
             self.node = node
         }
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func moveObjectPastCamera() {
         /*
@@ -30,8 +34,8 @@ class MoveComponent: GKComponent {
         Using this funciton will move the entity's node towards the viewer
         */
         
-        let moveAction: SCNAction = SCNAction.moveBy(SCNVector3(0, 0, 60), duration: 5)
-        let opacityAction = SCNAction.fadeOpacityTo(1, duration: 0.5)
+        let moveAction: SCNAction = SCNAction.move(by: SCNVector3(0, 0, 60), duration: 5)
+        let opacityAction = SCNAction.fadeOpacity(to: 1, duration: 0.5)
         let groupAction = SCNAction.group([moveAction, opacityAction])
         let moveRemoveSequence = SCNAction.sequence([groupAction, SCNAction.removeFromParentNode()])
         self.node?.runAction(moveRemoveSequence)

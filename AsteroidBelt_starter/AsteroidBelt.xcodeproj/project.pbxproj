@@ -199,6 +199,7 @@
 				TargetAttributes = {
 					45AEF9D01C9906F900A1C395 = {
 						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -359,6 +360,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.com.AsteroidBelt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -370,6 +372,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = self.edu.com.AsteroidBelt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

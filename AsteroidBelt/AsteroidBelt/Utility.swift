@@ -9,12 +9,12 @@
 import UIKit
 import GameplayKit
 
-func randomInt(lowest: Int, highest: Int) -> Int {
+func randomInt(_ lowest: Int, highest: Int) -> Int {
     let die = GKRandomDistribution(lowestValue: lowest, highestValue: highest)
     return die.nextInt()
 }
 
-func randomFloat(firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
+func randomFloat(_ firstNum: CGFloat, secondNum: CGFloat) -> CGFloat {
     return CGFloat(arc4random()) / CGFloat(UINT32_MAX) * abs(firstNum - secondNum) + min(firstNum, secondNum)
 }
 

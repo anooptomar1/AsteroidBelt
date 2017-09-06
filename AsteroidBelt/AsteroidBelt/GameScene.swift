@@ -15,8 +15,8 @@ enum CollisionCategory: Int {
     Logical categories of bodies to provide physics collision detection
     */
     case
-    Asteroid = 2,
-    Ship = 3
+    asteroid = 2,
+    ship = 3
     
 }
 
@@ -32,7 +32,7 @@ class GameScene: SCNScene {
     var isShowingShip = true
     var isShowingAsteroids = false
     
-    let moveAction: SCNAction = SCNAction.moveBy(SCNVector3(0, 0, 60), duration: 5)
+    let moveAction: SCNAction = SCNAction.move(by: SCNVector3(0, 0, 60), duration: 5)
     
     override init() {
         super.init()
@@ -54,13 +54,13 @@ class GameScene: SCNScene {
             self.rootNode.addChildNode(emptyActionNode)
             
             //creates SCNAction from spawn asteroids function
-            let blockAction = SCNAction.runBlock { (node) -> Void in
+            let blockAction = SCNAction.run { (node) -> Void in
                 self.spawnAsteroids()
             }
             
-            let waitAction = SCNAction.waitForDuration(0.5) //creates waiting action
+            let waitAction = SCNAction.wait(duration: 0.5) //creates waiting action
             let actionSequence = SCNAction.sequence([blockAction, waitAction]) //creates sequence of block and wait acitons
-            let repeatSequence = SCNAction.repeatActionForever(actionSequence) //repeats the sequence indefinetely
+            let repeatSequence = SCNAction.repeatForever(actionSequence) //repeats the sequence indefinetely
             
             emptyActionNode.runAction(repeatSequence) //run repeate action on empty node
             self.isShowingAsteroids = true
@@ -76,7 +76,7 @@ class GameScene: SCNScene {
         self.isShowingShip = false
     }
     
-    private func setupSpaceship() {
+    fileprivate func setupSpaceship() {
         /*
         Function to add spaceship node to the scene
         */
@@ -90,7 +90,7 @@ class GameScene: SCNScene {
         self.rootNode.addChildNode(node)
     }
     
-    private func setupWorld() {
+    fileprivate func setupWorld() {
         /*
         Setup the scene with light and camera
         */
@@ -102,13 +102,13 @@ class GameScene: SCNScene {
         
         let ambientLightNode = SCNNode()
         ambientLightNode.light = SCNLight()
-        ambientLightNode.light!.type = SCNLightTypeAmbient //set type of the light to ambient
-        ambientLightNode.light!.color = UIColor.whiteColor() //set color of the light to white
+        ambientLightNode.light!.type = SCNLight.LightType.ambient //set type of the light to ambient
+        ambientLightNode.light!.color = UIColor.white //set color of the light to white
         self.rootNode.addChildNode(ambientLightNode) //add ambient light to scene
         
         let lightNodeSpot = SCNNode()
         lightNodeSpot.light = SCNLight()
-        lightNodeSpot.light!.type = SCNLightTypeSpot //create spotlight
+        lightNodeSpot.light!.type = SCNLight.LightType.spot //create spotlight
         lightNodeSpot.position = SCNVector3(x: 30, y: 30, z: 30) //position the light
         
         let empty = SCNNode()
@@ -127,7 +127,7 @@ class GameScene: SCNScene {
         }
     }
     
-    private func spawnAsteroids() {
+    fileprivate func spawnAsteroids() {
         /*
         Function to spawn asteroids in the center of the scene
         */
@@ -145,7 +145,7 @@ class GameScene: SCNScene {
         
     }
     
-    private func createStar() {
+    fileprivate func createStar() {
         /*
         Function to create a star on top of the scene
         */
@@ -167,10 +167,10 @@ class GameScene: SCNScene {
         //first argument - is the radians to turn 
         //second argument - vector of x, y and z coordinates, the axis to rotate around is set to 1
         //third argument - duration of the turn
-        let rotateAction = SCNAction.rotateByAngle(CGFloat(M_PI * 2), aroundAxis: SCNVector3(0, 1, 0), duration: 60)
+        let rotateAction = SCNAction.rotate(by: CGFloat(M_PI * 2), around: SCNVector3(0, 1, 0), duration: 60)
 
         //create action as repetition of rotate action
-        let repeatedAction = SCNAction.repeatActionForever(rotateAction)
+        let repeatedAction = SCNAction.repeatForever(rotateAction)
         starNode.runAction(repeatedAction) //add repeated action to the star node
         
         if let starFire = SCNParticleSystem(named: "StarFire.scnp", inDirectory: nil) {

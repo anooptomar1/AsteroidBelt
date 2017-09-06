@@ -21,8 +21,8 @@ class RenderComponent: GKComponent {
         /*
         The function to initialize RenderComponent using the model from 3D scene
         */
-        
-        guard let scene = SCNScene(named: fromSceneNamed), let node = scene.rootNode.childNodeWithName(nodeNamed, recursively: true) else {
+        super.init()
+        guard let scene = SCNScene(named: fromSceneNamed), let node = scene.rootNode.childNode(withName: nodeNamed, recursively: true) else {
             return
         }
         
@@ -50,8 +50,12 @@ class RenderComponent: GKComponent {
         self.node = SCNNode(geometry: geometry)
         self.node?.opacity = 0
     }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-    private func fetchDiffuseMap(number: Int) -> UIImage? {
+    fileprivate func fetchDiffuseMap(_ number: Int) -> UIImage? {
         /*
         Creates diffuse map image for number of the map
         */
@@ -59,7 +63,7 @@ class RenderComponent: GKComponent {
         return UIImage(named: String(number) + "_diffuse")
     }
     
-    private func fetchNormalMap(number: Int) -> UIImage? {
+    fileprivate func fetchNormalMap(_ number: Int) -> UIImage? {
         /*
         Creates normal map image for number of the map
         */
@@ -67,7 +71,7 @@ class RenderComponent: GKComponent {
         return UIImage(named: String(number) + "_norm")
     }
     
-    private func fetchSpecularMap(number: Int) -> UIImage? {
+    fileprivate func fetchSpecularMap(_ number: Int) -> UIImage? {
         /*
         Creates specular map image for number of the map
         */

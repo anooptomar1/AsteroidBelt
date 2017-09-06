@@ -45,10 +45,14 @@ class AsteroidEntity: GKEntity {
         self.moveComponent = MoveComponent(node: self.node)
         
         //add physics body
-        self.node?.physicsBody = SCNPhysicsBody.dynamicBody()
-        self.node?.physicsBody?.categoryBitMask = CollisionCategory.Asteroid.rawValue
-        self.node?.physicsBody?.contactTestBitMask = CollisionCategory.Ship.rawValue
+        self.node?.physicsBody = SCNPhysicsBody.dynamic()
+        self.node?.physicsBody?.categoryBitMask = CollisionCategory.asteroid.rawValue
+        self.node?.physicsBody?.contactTestBitMask = CollisionCategory.ship.rawValue
         
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
 }
